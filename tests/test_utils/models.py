@@ -7,5 +7,8 @@ class Author(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     friends = models.ManyToManyField('self', blank=True)
 
+    books_started = models.IntegerField(null=True)
+    books_completed = models.IntegerField(null=True)
+
     def __str__(self):
         return self.name
