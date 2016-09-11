@@ -14,8 +14,9 @@ settings.configure(
         'default': {
             'ENGINE': 'django.contrib.gis.db.backends.postgis',
             'NAME': 'pg_utils_database',
-            'USER': 'root',
-            'PASSWORD': 'asd',
+            'USER': 'postgres',
+            'PASSWORD': '
+            ',
             'HOST': 'localhost',
             'PORT': '5432',
         }
