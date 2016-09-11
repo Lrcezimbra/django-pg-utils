@@ -10,7 +10,7 @@ from django.db.models import F
 from .models import Author
 
 
-class AnimalTestCase(TestCase):
+class AuthorQueryExpressionTests(TestCase):
     def setUp(self):
         pass
 
