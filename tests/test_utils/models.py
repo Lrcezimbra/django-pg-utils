@@ -13,5 +13,8 @@ class Author(models.Model):
     books_started = models.IntegerField(null=True)
     books_completed = models.IntegerField(null=True)
 
+    price = models.FloatField(null=True)
+    cost = models.IntegerField(null=True)
+
     def __str__(self):
         return self.name

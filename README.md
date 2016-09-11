@@ -28,6 +28,9 @@ queryset.annotate(speed=divide(F('distance'), F('time')))
 | Float            | Cast integer field to float                                   |
 | NullIf           | Return NULL if value is 0                                     |
 | divide           | Divide two integer or float columns and return a float        |
+| multiply         | Multiply two integer or float columns and return a float      |
+| add              | Add two integer or float columns and return a float           |
+| subtract         | Subtract two integer or float columns and return a float      |
 
 ### Tests
 To run tests with coverage, you will need the coverage package.
