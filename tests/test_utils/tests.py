@@ -1,6 +1,7 @@
 from pg_utils import (
     Date, DateTZ, Seconds, DistinctSum,
-    NullIf, Float, divide
+    NullIf, Float, divide, multiply,
+    subtract, add
 )
 
 from datetime import timedelta
@@ -40,6 +41,24 @@ class AuthorQueryExpressionTests(TestCase):
         )
         self.assertEqual(queryset[0].completion_rate, 0.625)
         self.assertEqual(queryset[1].completion_rate, None)
+
+    def test_multiply_works_correctly(self):
+        Author.objects.create(name='test_name_1', price=2.5, books_completed=9)
+
+        queryset = Author.objects.annotate(
+            revenue=multiply('price', 'books_completed')
+        )
+        self.assertEqual(queryset[0].revenue, 22.5)
+
+    def test_add_and_subtract_work_correctly(self):
+        Author.objects.create(name='test_name_1', price=12.5, cost=9)
+
+        queryset = Author.objects.annotate(
+            profit=subtract('price', 'cost'),
+            dummy=add('price', 'cost')
+        )
+        self.assertEqual(queryset[0].profit, 3.5)
+        self.assertEqual(queryset[0].dummy, 21.5)
 
     def test_cast_duration_into_seconds_works_correctly(self):
         current_time = timezone.now()

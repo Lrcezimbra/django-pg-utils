@@ -4,7 +4,7 @@ PostgreSQL functions. These can be used as a part of update, create,
 filter, order by, annotation, or aggregate.
 '''
 
-from django.db.models import Func, Sum
+from django.db.models import Func, Sum, F
 from django.db.models import ExpressionWrapper
 from django.db.models import FloatField
 
@@ -93,4 +93,43 @@ def divide(numerator, denominator):
     '''
     return ExpressionWrapper(Float(numerator) /
                              NullIf(denominator),
+                             output_field=FloatField())
+
+
+def multiply(operand_a, operand_b):
+    '''
+    Custom query expression to multiply two columns.
+
+    Example usage
+    queryset.annotate(
+        distance=multiply(F('speed'), F('time'))
+    )
+    '''
+    return ExpressionWrapper(F(operand_a) * F(operand_b),
+                             output_field=FloatField())
+
+
+def add(operand_a, operand_b):
+    '''
+    Custom query expression to add two columns.
+
+    Example usage
+    queryset.annotate(
+        total_data_usage=add(F('download_data'), F('upload_data'))
+    )
+    '''
+    return ExpressionWrapper(F(operand_a) + F(operand_b),
+                             output_field=FloatField())
+
+
+def subtract(operand_a, operand_b):
+    '''
+    Custom query expression to subtract two columns.
+
+    Example usage
+    queryset.annotate(
+        profit=subtract(F('revenue'), F('cost'))
+    )
+    '''
+    return ExpressionWrapper(F(operand_a) - F(operand_b),
                              output_field=FloatField())
