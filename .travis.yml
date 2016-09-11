@@ -13,7 +13,7 @@ notifications:
   email: false
 
 install:
-- pip install --upgrade django coverage pytest unittest2 pytest-cov coveralls
+- pip install --upgrade psycopg2 django coverage pytest unittest2 pytest-cov coveralls
 - python setup.py clean --all
 - python setup.py install
 - python setup.py clean --all
