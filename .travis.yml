@@ -1,0 +1,25 @@
+language: python
+
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+
+cache:
+  apt: true
+  pip: false
+
+notifications:
+  email: false
+
+install:
+- pip install --upgrade psycopg2 django coverage unittest2 coveralls
+- python setup.py clean --all
+- python setup.py install
+- python setup.py clean --all
+
+script:
+- coverage run tests/runtests.py
+
+after_success:
+- coveralls
