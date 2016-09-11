@@ -19,7 +19,7 @@ install:
 - python setup.py clean --all
 
 script:
-- python tests/runtests.py
+- coverage run tests/runtests.py
 
 after_success:
 - coveralls
