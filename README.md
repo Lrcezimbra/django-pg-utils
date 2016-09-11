@@ -5,12 +5,9 @@ Utility methods for Django + PostgreSQL applications
 [![Build Status](https://travis-ci.org/hypertrack/django-pg-utils.svg?branch=master)](https://travis-ci.org/hypertrack/django-pg-utils)
 
 ### What is this?
-The utils module has custom query expressions for Django, built on
-PostgreSQL functions. These can be used as a part of update, create,
-filter, order by, annotation, or aggregate.
+The utils module provides custom query expressions for Django, built on top of PostgreSQL functions. These can be used as a part of update, create, filter, order by, annotation, or aggregate. As with all query expressions, the computations leverage capabilities of the database, instead of loading data in the Django application.
 
 ### Usage
-
 ```
 pip install django-pg-utils
 ```
