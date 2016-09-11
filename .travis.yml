@@ -22,4 +22,5 @@ script:
 - coverage run --source=pg_utils tests/runtests.py
 
 after_success:
-- coveralls
+- coverage report
+- coveralls debug
