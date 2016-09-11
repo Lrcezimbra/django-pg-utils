@@ -13,8 +13,9 @@ pip install django-pg-utils
 ```
 
 ```
-from pg_utils import divide
+from pg_utils import DateTZ, divide
 
+queryset.annotate(created_date=DateTZ(F('created_at'), '+05:30')
 queryset.annotate(speed=divide(F('distance'), F('time')))
 ```
 
