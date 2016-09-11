@@ -24,13 +24,16 @@ settings.configure(
         'django.contrib.contenttypes',
         'django.contrib.auth',
         'tests.test_utils',
+        'pg_utils',
     )
 )
 django.setup()
 
+
 args = [sys.argv[0], 'test']
 # Current module (``tests``) and its submodules.
 test_cases = '.'
+
 
 # Allow accessing test options from the command line.
 offset = 1
@@ -44,9 +47,11 @@ else:
         test_cases = sys.argv[1]
         offset = 2
 
+
 args.append(test_cases)
 # ``verbosity`` can be overwritten from command line.
 args.append('--verbosity=2')
 args.extend(sys.argv[offset:])
+
 
 execute_from_command_line(args)
