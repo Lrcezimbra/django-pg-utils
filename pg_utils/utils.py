@@ -82,6 +82,22 @@ class Float(Func):
     template = '%(function)s(%(expressions)s AS FLOAT)'
 
 
+def LeftPad(expression, num_pad):
+    '''
+    Custom query expression to pad string from the left side for profit.
+
+    Example usage
+    queryset.annotate(
+        padded_name=LeftPad('name', 5)
+    )
+    '''
+    class LeftPad(Date):
+        function = 'LPAD'
+        template = '%(function)s(%(expressions)s, {num_pad}, \' \')'.format(num_pad=str(num_pad))
+
+    return LeftPad(expression)
+
+
 def divide(numerator, denominator):
     '''
     Custom query expression to divide numerator by denominator.

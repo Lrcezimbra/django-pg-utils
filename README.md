@@ -31,6 +31,7 @@ queryset.annotate(speed=divide(F('distance'), F('time')))
 | multiply         | Multiply two integer or float columns and return a float      |
 | add              | Add two integer or float columns and return a float           |
 | subtract         | Subtract two integer or float columns and return a float      |
+| LeftPad          | Because no package should ever be uploaded without left pad   |
 
 ### Tests
 To run tests with coverage, you will need the coverage package.
