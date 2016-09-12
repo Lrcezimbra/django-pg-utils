@@ -14,7 +14,7 @@ requirements = [
 setup(
     name='django-pg-utils',
     packages=['pg_utils'],
-    version='0.1.2',
+    version='0.1.4',
     description='Utility methods for Django + PostgreSQL applications',
     author='HyperTrack',
     author_email='devops@hypertrack.io',
