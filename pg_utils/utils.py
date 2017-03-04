@@ -28,12 +28,12 @@ def DateTZ(expression, timezone):
 
     Example usage
     queryset.annotate(
-        created_date=DateTZ('created_at', '+05:30')
+        created_date=DateTZ('created_at', 'Asia/Kolkata')
     )
     '''
     class DateWithTZ(Date):
         template = '%(function)s(%(expressions)s AT TIME ZONE '\
-                   'INTERVAL \'{timezone}\')'.format(timezone=timezone)
+                   '\'{timezone}\')'.format(timezone=timezone)
 
     return DateWithTZ(expression)
 
