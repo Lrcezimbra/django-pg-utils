@@ -69,3 +69,15 @@ class AuthorQueryExpressionTests(TestCase):
             duration=Seconds(F('modified_at') - F('created_at'))
         )
         self.assertEqual(queryset[0].duration, 5)
+
+    def test_cast_seconds_to_float(self):
+        current_time = timezone.now()
+        offset_time = current_time + timedelta(seconds=5)
+        Author.objects.create(name='test_name', modified_at=offset_time,
+                              created_at=current_time)
+
+        queryset = Author.objects \
+            .annotate(duration=Seconds(F('modified_at') - F('created_at'))) \
+            .filter(duration=5)
+
+        self.assertTrue(queryset.exists())

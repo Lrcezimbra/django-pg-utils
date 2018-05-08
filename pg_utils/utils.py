@@ -50,6 +50,12 @@ class Seconds(Func):
     function = 'EXTRACT'
     template = '%(function)s(EPOCH FROM %(expressions)s)'
 
+    def __init__(self, *args, **kwargs):
+        if not kwargs.get('output_field'):
+            kwargs['output_field'] = FloatField()
+
+        return super(Seconds, self).__init__(*args, **kwargs)
+
 
 class DistinctSum(Sum):
     '''
